@@ -1,0 +1,44 @@
+<ion-view view-title="GPS">
+  <ion-content class="padding">
+    <h2>Test GPS</h2>
+
+    <form ng-submit="submit()">
+      <!-- <label class="item item-input item-stacked-label">
+        <span class="input-label">Username</span>
+        <input type="text" name="username" placeholder="enter username" ng-model="data.username">
+      </label> -->
+
+      <input ng-show="isTrackingPosition == false" ng-click="isTrackingPosition = true; startTracking();" class="button button-block button-positive" type="submit" name="submit" value="Submit to server">
+      <input ng-show="isTrackingPosition == true" ng-click="isTrackingPosition = false; stopTrackingPosition();" class="button button-block button-positive" type="submit" name="submit" value="Submit to server">
+
+    </form>
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        Response: <b ng-bind="response"></b>
+      </div>
+    </div>
+
+    <!-- <div class="row">
+      <div class="col text-center">
+        <button ng-show="isTrackingPosition == false" ng-click="isTrackingPosition = true; startTracking();" class="button button-positive">Start tracking position</button>
+        <button ng-show="isTrackingPosition == true" ng-click="isTrackingPosition = false; stopTrackingPosition();" class="button button-assertive">Stop tracking position</button>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col text-center">
+
+        <p><strong>Tracking:</strong> {{ isTrackingPosition }}</p>
+        <br>
+
+        <ul id="positionsList">
+          <li ng-repeat="position in jsonPositionsLog">
+            {{ position.latitude }}, {{ position.longitude }}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
