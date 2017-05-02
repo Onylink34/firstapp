@@ -2,36 +2,25 @@ angular.module('starter.controllers', ['ionic', 'ngMap'])
 
 .controller('DashCtrl', function($scope) {})
 
-.controller('AccountCtrl', function($scope,$http) {
-  var intervalGetPosition;
-  $scope.jsonPositionsLog   = [];
+.controller('AccountCtrl', function($scope, $http) {
+  var l1;
+  var l2;
 
-  $scope.data = {};
-  $scope.settings = {
-    enableFriends: true
-  };
-  $scope.submit = function(){
-    initGetLocationListener();
+    navigator.geolocation.getCurrentPosition(function(pos){
+      l1 = pos.coords.latitude;
+      l2 = pos.coords.longitude;
+      $scope.data = {};
+      $scope.submitapex = function(apexvalue){
+          var link = 'http://gbrunel.fr/ionic/api.php';
+          alert(apexvalue);
+          $http.post(link, {longitude : l1, latitude : l2}).then(function (res){
+              $scope.response = res.data;
+          });
+      };
 
-    var link = 'http://gbrunel.fr/ionic/api.php';
+		},function(err){
 
-    $http.post(link, {username : $scope.data.username}).then(function (res){
-      $scope.response = $scope.jsonPositionsLog;
-    });
-  };
-
-  initGetLocationListener = function()
-  {
-    // init location listener
-    intervalGetPosition = navigator.geolocation.watchPosition( function(position)
-    {
-      $scope.jsonPositionsLog.push({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      });
-    }
-  );
-}
+		});
 
 })
 

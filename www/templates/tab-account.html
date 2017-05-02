@@ -1,24 +1,25 @@
 <ion-view view-title="Account">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <!-- <form ng-submit="submit1()">
+    <input class="button button-block button-positive" type="submit" name="submit" value="1">
+  </form>
+  <input class="button button-block button-positive" ng-click="submit1(chat)" name="submit" value="1" id="d1"> -->
+  <button class="button button-block button-positive icon ion-android-star-outline" ng-click="submitapex('apex0')">
+    Apex 0
+  </button>
+  <button class="button button-block button-balanced icon ion-android-star-half" ng-click="submitapex('apex1')">
+    Apex 1
+  </button>
+  <button class="button button-block button-royal icon ion-android-star" ng-click="submitapex('apex2')">
+    Apex 2
+  </button>
 
-    <form ng-submit="submit()">
-        <label class="item item-input item-stacked-label">
-            <span class="input-label">Username</span>
-            <input type="text" name="username" placeholder="enter username" ng-model="data.username">
-        </label>
 
-        <input class="button button-block button-positive" type="submit" name="submit" value="Submit to server">
-    </form>
-
-    <div class="card">
-        <div class="item item-text-wrap">
-            Response: <b ng-bind="response"></b>
-        </div>
+  <div class="card">
+    <div class="item item-text-wrap">
+      Response: <b ng-bind="response"></b>
     </div>
-  </ion-content>
+  </div>
+
+</ion-content>
 </ion-view>
